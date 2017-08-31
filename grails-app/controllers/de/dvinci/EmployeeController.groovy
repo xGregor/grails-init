@@ -72,16 +72,14 @@ class EmployeeController {
         }
     }
 
-    @Transactional
     def delete(Employee employee) {
 
         if (employee == null) {
-            transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        employee.delete flush: true
+        employeeService.delete(employee)
 
         request.withFormat {
             form multipartForm {

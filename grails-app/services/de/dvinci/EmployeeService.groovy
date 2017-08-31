@@ -21,4 +21,9 @@ class EmployeeService {
             throw new DvinciValidationException()
         }
     }
+
+    @Transactional
+    void delete(Employee employee) {
+        employee.delete()
+    }
 }
