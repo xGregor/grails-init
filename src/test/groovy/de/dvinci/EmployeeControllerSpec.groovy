@@ -130,6 +130,7 @@ class EmployeeControllerSpec extends Specification implements ControllerUnitTest
         controller.delete(null)
 
         then: "A 404 is returned"
+        0 * controller.employeeService.delete(_)
         response.redirectedUrl == '/employee/index'
         flash.message != null
 

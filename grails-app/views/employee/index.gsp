@@ -23,6 +23,10 @@
             <div class="pagination">
                 <g:paginate total="${employeeCount ?: 0}" />
             </div>
+
+            <g:each in="${employeeList}" var="employee">
+                <dv:employee employee="${employee}" size="big"/>
+            </g:each>
         </div>
     </body>
 </html>

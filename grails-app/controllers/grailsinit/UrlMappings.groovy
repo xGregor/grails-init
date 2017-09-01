@@ -9,6 +9,8 @@ class UrlMappings {
             }
         }
 
+        "/Mitarbeiter/$firstName"(controller: "employee", action: "mitarbeiter")
+
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')

@@ -19,14 +19,16 @@ class EmployeeServiceSpec extends Specification implements ServiceUnitTest<Emplo
     }
 
     void "save should create Employee when command is valid"() {
-        given:
+        given: "a command"
         def command = new EmployeeCommand(firstName: "TestName", lastName: "LastName")
 
-        when:
+        when: "calling method save"
         def result = service.save(command)
 
-        then:
+        then: "object is persisted"
         result.id
+
+        and: "properties are .."
         result.lastName == "LastName"
         result.firstName == "TestName"
     }

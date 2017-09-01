@@ -14,11 +14,19 @@ class EmployeeController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def employeeList = employeeService.list(params)
-        respond employeeList, model: [employeeCount: employeeList.size()]
+        respond employeeList, model: [employeeList: employeeList, employeeCount: employeeList.size()]
     }
 
-    def show(Employee employee) {
-        respond employee
+    def show(Long id) {
+        def employee = Employee.get(id)
+        if (!employee) {
+            notFound()
+        } else
+            respond employee
+    }
+
+    def mitarbeiter(String firstName) {
+        Employee.findByFirstName(firstName)
     }
 
     def create(EmployeeCommand employeeCommand) {
